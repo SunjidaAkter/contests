@@ -23,8 +23,6 @@ int main(){
             int sum=0;
             while(!st.empty()){
                 sum+=st.top();
-                // cout<<st.top()<<"s";
-                // st.pop();
                 if(!st.empty())st.pop();
                 else break;
                 if(!st.empty())st.pop();
