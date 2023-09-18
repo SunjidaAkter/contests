@@ -5,9 +5,9 @@ int main(){
     cin>>test;
 
     while(test--){
-        int a,b,c;
+        double a,b,c;
         cin>>a>>b>>c;
-        cout<<(abs(a-b)+c*2-1)/(c*2)<<endl;
+        cout<<ceil((abs(a-b)/2)/c)<<endl;
     }               
     return 0;
 }
