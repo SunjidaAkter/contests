@@ -12,9 +12,7 @@ int main(){
             if(k==x){
                 cout<<((k*(k-1))/2)+((k-1)*(n-k))<<endl;
             }else{
-                int sum=(k*(k-1))/2;
-                int mul=x*(n-k);
-                cout<<sum+mul<<endl;
+                cout<<((k*(k-1))/2)+(x*(n-k))<<endl;
             }
         }
     }
