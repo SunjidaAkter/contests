@@ -8,11 +8,10 @@ int main(){
         double l,v1,v2;cin>>l>>v1>>v2;
         int x=ceil(l/v1);
         int y=ceil(l/v2);
-        // cout<<x<<" "<<y;
         if(x<=y)cout<<-1<<endl;
         else{
             int s=((x-y)/v1);
-            cout<<s<<endl;
+            cout<<((x-y)-1)<<endl;
         }
     }
     return 0;

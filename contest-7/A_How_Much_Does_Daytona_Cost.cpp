@@ -11,7 +11,6 @@ int main(){
         auto it=find(a.begin(),a.end(),k);
         int sk=0;
         map<int,int>mp;
-        // cout<<(it==a.end())<<endl;
         if(it!=a.end()){
             for(int i=0;i<n;i++){
                 mp[a[i]]++;
