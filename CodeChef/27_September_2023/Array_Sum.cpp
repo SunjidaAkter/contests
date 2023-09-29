@@ -1,31 +1,52 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef pair<int,int>pii;
-#define ll long long
+#define ll long long int
 int main(){
     int q;cin>>q;
     while(q--){
         ll n,k;cin>>n>>k;
-        // cout<<n<<" "<<k<<endl;
-        vector<ll>v;
-        if(n<k){
-            if(n==2&&k%2!=0){
-                v.push_back(1);v.push_back(k-1);
-                for(ll val:v)cout<<val<<" ";
-                cout<<endl;
-            }else if(n>2){
-                if(((n/2)%2==0&&k%2==0)&&((n/2)%2==1&&k%2==1)){
-                    for(int i=0;i<n-1;i++)v.push_back(i+1);
-                    // int sum=((n*(n-1)/2)-k);
-                    if((k-(n*(n-1)/2))<=0||(k-(n*(n-1)/2))<=n-1)cout<<-1<<endl;
-                    else{
-                        v.push_back((k-(n*(n-1)/2)));
-                        for(int val:v)cout<<val<<" ";
-                        cout<<endl;
-                    }
-                }else cout<< -1<<endl;
-            }else cout<< -1<<endl;
-        }else cout<< -1<<endl;
+        vector<ll>v(n,0);
+        bool flag=true;
+        if(k<n)flag=false;
+        else{
+            for(ll i=0;i<n;i++){
+                if(i%2){
+                    v[i]+=1;
+                    k-=1;
+                }else{
+                    v[i]+=2;
+                    k-=2;
+                }
+            }
+            if(k<0)flag=false;
+            //* 2x=n/k; rakhar jonno x er value evabe ber korsi 
+            ll x=k/(2*n);
+            // cout<<k<<"k";
+            k=k%(2*n);
+            ll i=0;
+            while(k>0){
+                if(k==1){
+                    flag=false;
+                    break;
+                }
+                v[i]+=2;
+                k-=2;
+                i++;i%=n;
+            }
+            for(ll i=0;i<n;i++){
+                if(x<0)x=1;
+                v[i]+=(2*x);
+                if(v[i]>100000){
+                    flag=false;
+                    break;
+                }
+            }
+        }
+        if(flag){
+            for(ll val:v)cout<<val<<" ";
+            cout<<endl;
+        }else cout<<-1<<endl;
     }
     return 0;
 }
