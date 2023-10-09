@@ -3,21 +3,24 @@ using namespace std;
 #define ll long long
 #define pub push_back
 #define pob pop_back
-#define yes cout << "YES" << endl
-#define no cout << "NO" << endl
-#define Yes cout << "Yes" << endl
-#define No cout << "No" << endl
-typedef pair<ll,ll>pii;
-#define forl(var,str,end) for(long long int var=str; var<end; var++)
+#define nl  '\n'
+#define yes cout << "YES" << nl
+#define no cout << "NO" << nl
+#define Yes cout << "Yes" << nl
+#define No cout << "No" << nl
+typedef pair<int,int>pii;
+#define forl(ty,var,str,end) for(ty var=str; var<end; var++)
+# define FAST ios_base :: sync_with_stdio (false) ; cin.tie(0) ; cout.tie(0)
 void solve(){
     ll n;cin>>n;
-    if(n<=6||n==9)cout<<"NO"<<endl;
+    if(n<=6||n==9)cout<<"NO"<<nl;
     else{
-        if(n%3!=0)cout<<"YES"<<endl<<1<<" "<<2<<" "<<n-3<<endl;
-        else cout<<"YES"<<endl<<1<<" "<<4<<" "<<n-5<<endl;
+        if(n%3!=0)cout<<"YES"<<nl<<1<<" "<<2<<" "<<n-3<<nl;
+        else cout<<"YES"<<nl<<1<<" "<<4<<" "<<n-5<<nl;
     }
 }
 int main(){
+    FAST;
     int t;cin>>t;
     while(t--){
         solve();
