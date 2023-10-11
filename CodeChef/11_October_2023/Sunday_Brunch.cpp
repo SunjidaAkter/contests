@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define pub push_back
+#define pob pop_back
+#define nl  '\n'
+#define yes cout << "YES" << nl
+#define no cout << "NO" << nl
+#define Yes cout << "Yes" << nl
+#define No cout << "No" << nl
+typedef pair<int,int>pii;
+#define forl(ty,var,str,end) for(ty var=str; var<end; var++)
+# define FAST ios_base :: sync_with_stdio (false) ; cin.tie(0) ; cout.tie(0)
+void solve(){
+    int x,y;cin>>x>>y;
+    if((x/y)<=20)cout<<x/y<<nl;
+    else cout<<20<<nl;
+}
+int main(){
+    FAST;
+    int t;cin>>t;
+    while(t--){
+        solve();
+    }
+    return 0;
+}
