@@ -14,8 +14,8 @@ typedef pair<int,int>pii;
 double distance(double ai,double aj,double bi,double bj){
     return (sqrt(((ai-bi)*(ai-bi))+((aj-bj)*(aj-bj))));
 }
-bool inside(double ai,double aj,double bi,double bj,double mid){
-    return distance(ai,aj,bi,bj)<=mid;
+bool inside(double ai,double aj,double bi,double bj,double m){
+    return distance(ai,aj,bi,bj)<=m;
 }
 void solve(){
     double pi,pj,ai,aj,bi,bj;
@@ -23,17 +23,17 @@ void solve(){
     double l=0,r=1e5;
     double ans;
     while((r-l)>1e-11){
-        double mid=(l+r)/2;
-        if(inside(ai,aj,pi,pj,mid)&&inside(ai,aj,0,0,mid)){
-            ans=mid;r=mid;
-        }else if(inside(bi,bj,pi,pj,mid)&&inside(bi,bj,0,0,mid)){
-            ans=mid;r=mid;
-        }else if(inside(bi,bj,pi,pj,mid)&&inside(ai,aj,0,0,mid)&&distance(ai,aj,bi,bj)<=2*mid){
-            ans=mid;r=mid;
-        }else if(inside(ai,aj,pi,pj,mid)&&inside(bi,bj,0,0,mid)&&distance(ai,aj,bi,bj)<=2*mid){
-            ans=mid;r=mid;
+        double m=(l+r)/2;
+        if(inside(ai,aj,pi,pj,m)&&inside(ai,aj,0,0,m)){
+            ans=m;r=m;
+        }else if(inside(bi,bj,pi,pj,m)&&inside(bi,bj,0,0,m)){
+            ans=m;r=m;
+        }else if(inside(bi,bj,pi,pj,m)&&inside(ai,aj,0,0,m)&&distance(ai,aj,bi,bj)<=2*m){
+            ans=m;r=m;
+        }else if(inside(ai,aj,pi,pj,m)&&inside(bi,bj,0,0,m)&&distance(ai,aj,bi,bj)<=2*m){
+            ans=m;r=m;
         }else{
-            l=mid;
+            l=m;
         }
     }   
     cout<<fixed<<setprecision(10)<<ans<<nl;
