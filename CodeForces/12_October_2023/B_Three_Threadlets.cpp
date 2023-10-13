@@ -4,6 +4,7 @@ using namespace std;
 #define pub push_back
 #define pob pop_back
 #define nl  '\n'
+#define all(X) (X).begin(), (X).end()
 #define yes cout << "YES" << nl
 #define no cout << "NO" << nl
 #define Yes cout << "Yes" << nl
@@ -14,7 +15,7 @@ typedef pair<int,int>pii;
 void solve(){
     vector<int>v(3);
     for(int i=0;i<3;i++)cin>>v[i];
-    sort(v.begin(),v.end());
+    sort(all(v));
     int sum=3;
     while(sum--){
         if(v[1]>v[0]){
