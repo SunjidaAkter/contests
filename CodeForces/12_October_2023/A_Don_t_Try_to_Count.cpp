@@ -17,39 +17,19 @@ bool isSubstring(string s1, string s2){
 void solve(){
     int n,m;cin>>n>>m;
     string s1,s2;cin>>s1>>s2;
-    int sum=1,sum2=0;
-    // string c1=s1,c2=s2;
-    // sort(c1.begin(),c1.end());
-    // sort(c2.begin(),c2.end());
-    // cout<<c1<<" "<<c2<<"n";
-    // bool flag=true;
-    // for(int i=0;i<c1.size();i++){
-    //     if(c1[i]!=c2[i]){
-    //         flag=false;
-    //         break;
-    //     }
-    // }
+    int sum=1;
     if(isSubstring(s2,s1))cout<<0<<nl;
     else{
-        // s1+=s1;
-        // // cout<<s1<<" ";
-        // if(s1.size()<=s2.size()){
+        s1+=s1;
+        for(int i=1;s1.size()<3*s2.size();i++){
+            if(isSubstring(s2,s1)){
+                break;
+            }
             s1+=s1;
             sum++;
-            for(int i=1;s1.size()<3*s2.size();i++){
-                // cout<<"L"<<nl;
-                if(isSubstring(s2,s1)){
-                    break;
-                }
-                s1+=s1;
-                sum++;
-            }
-            if(isSubstring(s2,s1))cout<<sum-1<<nl;
-            else cout<<-1<<nl;
-        // }else{
-        //     if(isSubstring(s2,s1))cout<<sum<<nl;
-        //     else cout<<-1<<nl;
-        // }
+        }
+        if(isSubstring(s2,s1))cout<<sum<<nl;
+        else cout<<-1<<nl;
     }
 }
 int main(){
