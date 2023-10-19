@@ -17,13 +17,8 @@ void solve(){
     ll n;cin>>n;
     ll a[n],sum=0;
     for(ll i=0;i<n;i++)cin>>a[i];
-    for(ll i=1;i<n-1;i++){
-        if(a[i]>=a[i-1]||a[i]>=a[i+1])continue;
-        else if(a[i]<a[i-1]&&a[i]<a[i+1]){
-            if(a[i-1]>=a[i+1])a[i]=a[i+1];
-            else a[i]=a[i-1];
-        }
-    }
+    sort(a,a+n);
+    for(ll i=0;i<n-1;i++)a[i]=a[n-2];
     for(ll i=0;i<n;i++)sum+=a[i];
     c(sum);
 }
