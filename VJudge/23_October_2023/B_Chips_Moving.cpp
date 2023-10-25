@@ -11,10 +11,8 @@ int main(){
 	}
 	vector<int> ans(2);
 	for(int i=0;i<n;i++){
-		// cout<<a[0]<<" ";
-		ans[i%2]++;
+		ans[a[i]%2]++;
 	}
-	// cout<<a[0]<<" "<<a[1]<<endl;
 	cout << min(ans[0] , ans[1])<<"\n";
     return 0;
 }
