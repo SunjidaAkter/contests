@@ -14,8 +14,9 @@ typedef pair<int,int>pii;
 #define forl(ty,var,str,end) for(ty var=str; var<end; var++)
 # define FAST ios_base :: sync_with_stdio (false) ; cin.tie(0) ; cout.tie(0)
 void solve(){
-    int n,v;cin>>n>>v;
-    cout<<(v/2)+1<<nl;
+    int x,y;cin>>x>>y;
+    if(x%2&&y%2)no;
+    else yes;
 }
 int main(){
     FAST;
