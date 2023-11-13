@@ -13,25 +13,32 @@ using namespace std;
 typedef pair<int,int>pii;
 #define forl(ty,var,str,end) for(ty var=str; var<end; var++)
 # define FAST ios_base :: sync_with_stdio (false) ; cin.tie(0) ; cout.tie(0)
-const ll mod=1e9+7;
 void solve(){
-    ll n,k;cin>>n>>k;
-    string s;cin>>s;
-    ll cnt=0,j=1,ans=1;
-    vector<pii>v;
-    for(ll i=0;i<n;i++){
-        if(s[i]=='a'||s[i]=='e'||s[i]=='i'||s[i]=='o'||s[i]=='u'){
-            cnt++;
-            v.push_back({j,i});
-            j++;
+    int n;cin>>n;
+    int a[n],b[n];
+    for(int i=0;i<n;i++)cin>>a[i];
+    for(int i=0;i<n;i++)cin>>b[i];
+    int s1=0,mx1=0;
+    for(int i=0;i<n;i++){
+        if(a[i]!=0)s1++;
+        if(a[i]==0){
+            mx1=max(mx1,s1);
+            s1=0;
         }
     }
-    ll c=cnt/k;
-    for(ll i=(k-1);i<(c*k-1);i+=k){
-        ans*=(abs(v[i].second-v[i+1].second));
-        ans%=mod;
+    mx1=max(mx1,s1);
+    int s2=0,mx2=0;
+    for(int i=0;i<n;i++){
+        if(b[i]!=0)s2++;
+        if(b[i]==0){
+            mx2=max(mx2,s2);
+            s2=0;
+        }
     }
-    cout<<ans<<nl;
+    mx2=max(mx2,s2);
+    if(mx1==mx2)c("Draw");
+    if(mx1<mx2)c("Addy");
+    if(mx1>mx2)c("Om");
 }
 int main(){
     FAST;
