@@ -16,28 +16,34 @@ typedef pair<int,int>pii;
 void solve(){
     int n;cin>>n;
     int a[n],even=0,odd=0;
+    vector<int>e;
+    vector<int>o;
     for(int i=0;i<n;i++)cin>>a[i];
     for(int i=0;i<n;i++){
-        if(a[i]&1)odd++;
-        else even++;
+        if(a[i]&1){odd++;o.push_back(a[i]);}
+        else {even++;e.push_back(a[i]);}
     }
     if((even&1)||(odd&1))cout<<-1<<nl;
     else{
-        bool ok=0;
-        vector<int>ans;
-        for(int i=0;i<n;i+=2){
-            if((a[i]%2==0&&a[i+1]%2==0)||(a[i]%2!=0&&a[i+1]%2!=0)){
-                ans.push_back((a[i]+a[i+1])/2);
-                ans.push_back(abs(a[i]-(a[i]+a[i+1])/2));
-            }else ok=1;
+        vector<int>ans(n);
+        sort(all(e));
+        int i=0,j=e.size()-1,idx=0;
+        while(i<j){
+            ans[idx]=(e[i]+e[j])/2;
+            ans[idx+(n/2)]=abs(e[j]-((e[i]+e[j])/2));
+            i++,j--,idx++;
         }
-        if(ok)c(-1);
-        else{
-            sort(all(ans));
-            reverse(all(ans));
-            for(int val:ans)cout<<val<<" ";
-            cout<<nl;
+        sort(all(o));
+        i=0,j=o.size()-1;
+        while(i<j){
+            ans[idx]=(o[i]+o[j])/2;
+            ans[idx+(n/2)]=abs(o[j]-((o[i]+o[j])/2));
+            i++,j--,idx++;
         }
+        // sort(all(ans));
+        // reverse(all(ans));
+        for(int val:ans)cout<<val<<" ";
+        cout<<nl;
     }
 }
 int main(){
