@@ -15,28 +15,18 @@ typedef pair<int,int>pii;
 # define FAST ios_base :: sync_with_stdio (false) ; cin.tie(0) ; cout.tie(0)
 void solve(){
     int n;cin>>n;
-    double a[n];
-    set<int>st;
-    for(int i=0;i<n;i++){cin>>a[i];st.insert(a[i]);}
-    if(n==1||st.size()==1)cout<<0<<nl;
-    else{
-        int cnt=0;
-        while(st.size()>1){
-            st.clear();
-            ll sum=0;
-            for(int i=1;i<n;i++){
-                sum+=(a[i-1]-a[i]);
-            }
-            ll avg=sum/(n-1);
-            for(int i=1;i<n;i++){
-                a[i]=floor((a[i]+avg)/2);
-                cout<<a[i]<<' ';
-                st.insert(a[i]);
-            }
-            cout<<nl;
-            cnt++;
-        }
-        cout<<cnt<<nl;
+    int a[n];
+    for(int i=0;i<n;i++)cin>>a[i];
+    sort(a,a+n);
+    ll cnt=0;
+    while(a[0]!=a[n-1]){
+        a[n-1]=(a[n-1]+a[0])/2;
+        cnt++;
+    }
+    cout<<cnt<<nl;
+    if(cnt&&cnt<=n){
+        while(cnt--)cout<<a[0]<<" ";
+        cout<<nl;
     }
 }
 int main(){
