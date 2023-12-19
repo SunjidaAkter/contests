@@ -23,6 +23,7 @@ void solve(){
     ll rem=n%2;
     cout<<max(uncovered,rem)<<nl;
 }
+
 int main(){
     FAST;
     int t;cin>>t;
