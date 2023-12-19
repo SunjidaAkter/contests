@@ -27,7 +27,6 @@ void solve(){
     }
     vector<pair<int,char>>v;
     for(int i=0;i<up.size();i++){
-        // cout<<up[i].second<<" ";
         v.push_back(up[i]);
     }
     for(int i=0;i<lo.size();i++){
