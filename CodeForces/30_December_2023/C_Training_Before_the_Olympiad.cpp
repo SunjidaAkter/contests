@@ -18,19 +18,36 @@ void solve(){
     ll a[n];
     for(ll i=0;i<n;i++)cin>>a[i];
     vector<ll>ans(n);
+    vector<ll>v(n);
     ans[0]=a[0];
     for(ll i=1;i<n;i++){
         ans[i]=ans[i-1]+a[i];
     }
-    cout<<ans[0]<<" ";
-    for(ll i=0;i<n;i++){
+    // for(ll i=0;i<n;i++){
+    //     cout<<a[i]<<" ";
+    // }
+    // cout<<nl;
+    // for(ll i=0;i<n;i++){
+    //     cout<<ans[i]<<" ";
+    // }
+    // cout<<nl;
+    v[0]=ans[0];
+    // cout<<ans[0]<<" ";
+    ll x=0;
+    for(ll i=1;i<n;i++){
         if(ans[i]%2!=0){
-            ll x=1;
-            cout<<ans[i]-1<<" ";
+            if(ans[i-1]%2==0||i-1==0){v[i]=ans[i]-1;ans[i]-=1;x=1;}
+            else {v[i]=ans[i]+x;x=0;}
         }else{
-            if
+            if((ans[i-1]%2==0)&&x){v[i]=ans[i]-2;ans[i]-=2;x=1;}
+            else {v[i]=ans[i];}
+            // v[i]=ans[i];
         }
     }
+    for(ll i=0;i<n;i++){
+        cout<<v[i]<<" ";
+    }
+    cout<<nl;
 }
 int main(){
     FAST;
