@@ -22,11 +22,15 @@ void solve(){
     for(ll i=1;i<n;i++){
         ans[i]=ans[i-1]+a[i];
     }
-    // cout<<ans[0]<<" ";
+    cout<<ans[0]<<" ";
     for(ll i=0;i<n;i++){
-        cout<<ans[i]<<" ";
+        if(ans[i]%2!=0){
+            ll x=1;
+            cout<<ans[i]-1<<" ";
+        }else{
+            if
+        }
     }
-    cout<<nl;
 }
 int main(){
     FAST;
