@@ -16,6 +16,12 @@ void solve(){
         if(n==2)cout<<1<<" "<<2<<nl;
      }else if(abs(n-k)<2)cout<<-1<<nl;
      else{
+        if((n-k)==2){
+            cout<<n<<" ";
+            for(ll i=1;i<n;i++)cout<<i<<" ";
+            cout<<nl;
+            return;
+        }
         cout<<1<<" ";
         if(k==0){
             for(ll i=2;i<=n;i++){
