@@ -15,19 +15,16 @@ void solve(){
     for(ll i=0;i<n;i++)cin>>a[i];
     vector<ll>v1,v2;
     v1.push_back(a[0]);
-    ll x;
-    for(ll i=1;i<n;i++){
-        if(a[i-1]<a[i]){
-            v2.push_back(a[i]);
-            x=i+1;
-            break;
-        }else v1.push_back(a[i]);
-    }
     ll ans=0;
-    for(ll i=x;i<n;i++){
-        if(a[i]<=v1.back())v1.push_back(a[i]);
-        else if(a[i]<=v2.back())v2.push_back(a[i]);
-        else v2.push_back(a[i]);
+    for(ll i=1;i<n;i++){
+        if((!v2.empty())&&(a[i]<=v1.back()&&a[i]<=v2.back())){
+            if(v1.back()<=v2.back())v1.push_back(a[i]);
+            else v2.push_back(a[i]);
+        }else if((!v2.empty())&&(a[i]>v1.back()&&a[i]>v2.back())){
+            if(v1.back()<=v2.back())v1.push_back(a[i]);
+            else v2.push_back(a[i]);
+        }else if(a[i]<=v1.back())v1.push_back(a[i]);
+        else if(a[i]>v1.back())v2.push_back(a[i]);
     }
     for(ll i=1;i<v1.size();i++){
         if(v1[i-1]<v1[i])ans++;
