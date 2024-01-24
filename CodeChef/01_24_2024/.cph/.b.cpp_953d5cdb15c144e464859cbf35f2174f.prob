@@ -1,0 +1,1 @@
+{"name":"Local: b","url":"f:\\Projects\\Phitron\\Real life contest\\CodeChef\\01_24_2024\\b.cpp","tests":[{"id":1706107348966,"input":"3\n3 2\n3 3\n4 2","output":"2 3\n1 2 3\n2 4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"f:\\Projects\\Phitron\\Real life contest\\CodeChef\\01_24_2024\\b.cpp","group":"local","local":true}
