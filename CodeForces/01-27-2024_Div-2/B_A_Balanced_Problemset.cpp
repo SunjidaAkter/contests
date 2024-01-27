@@ -12,7 +12,7 @@ typedef pair<ll,ll>pii;
 void solve(){
     ll n,k;cin>>n>>k;
     ll gcd=1;
-for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= n; i++)
     {
         if (!(n% i) && n/ i >= k)
                 gcd = i;
