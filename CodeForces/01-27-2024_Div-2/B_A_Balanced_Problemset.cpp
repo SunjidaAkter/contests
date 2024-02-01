@@ -12,13 +12,13 @@ typedef pair<ll,ll>pii;
 void solve(){
     ll n,k;cin>>n>>k;
     ll gcd=1;
-    for (int i = 1; i <= n; i++)
+    for (ll i = 1; i*i <= n; i++)
     {
-        if (!(n% i) && n/ i >= k)
-                gcd = i;
-           
-        if (n / i < k)
-            break;
+        if (n%i==0){
+            ll x=n/i;
+            if(x>=k)gcd=max(gcd,i);
+            if(i>=k)gcd=max(gcd,x);
+        }
     }
     cout<<gcd<<nl;
 }
