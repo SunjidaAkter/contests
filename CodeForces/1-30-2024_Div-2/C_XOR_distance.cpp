@@ -10,17 +10,34 @@ using namespace std;
 #define FAST ios_base :: sync_with_stdio (false) ; cin.tie(0) ; cout.tie(0)
 typedef pair<ll,ll>pii;
 void solve(){
-    ll a,b,x;cin>>a>>b>>x;
+    ll a,b,r;cin>>a>>b>>r;
     if(a<b)swap(a,b);
-    ll ans=a-b,cnt=0,mnn=ans;
+    ll start=0;
+    ll x=0,y=0,ok=0;
     for(ll i=60;i>=0;i--){
-        if(((b>>i)&1)==0&&((a<<i)&1)==1&&cnt+(1ll<<i)<=x){
-            if(ans>=2*(1ll<<i)){
-                cnt+=(1ll<<i);ans-=2*(1ll<<i);
-            }else mnn=min(mnn,2*(1ll<<i)-ans);
+        ll abit=0,bbit=0;
+        if(a&(1ll<<i))abit=1;
+        if(b&(1ll<<i))bbit=1;
+        if((abit==bbit)&&(r&(1ll<<i)))ok=1;
+        if(abit==bbit)continue;
+        if(start==0){
+            start=1;
+            x+=(1ll<<i);
+            if(r&(1ll<<i))ok=1;
+        }else{
+            if(abit==0&&bbit==1){
+                y+=(1ll<<i);
+                if(r&(1ll<<i))ok=1;
+            }else{
+                if((r&(1ll<<i))||ok)y+=(1ll<<i);
+                else{
+                    x+=(1ll<<i);
+                    if(r&(1ll<<i))ok=1;
+                }
+            }
         }
     }
-    cout<<min(ans,mnn)<<nl;
+    cout<<x-y<<nl;
 }
 int main(){
     FAST;
