@@ -13,21 +13,15 @@ void solve(){
     ll n,x,y;cin>>n>>x>>y;
     ll a[n],ans=0;
     for(ll i=0;i<n;i++)cin>>a[i];
-    vector<ll>v;
-    map<ll,ll>mp;
+    map<pii,ll>mp;
     for(ll i=0;i<n;i++){
-        mp[(a[i]%x)]++;
-    }
-    vector<pii>vp;
-    for(ll i=0;i<n;i++){
-        // cout<<(a[i]%x)<<" ";
-        if(a[i]>x)if(mp[n-(a[i]%x)]>0)v.push_back(a[i]);
-    }
-    for(ll val:v)cout<<val<<" ";
-    for(ll i=0;i<v.size();i++){
-        for(ll j=i+1;j<v.size();j++){
-            if(abs(a[i]-a[j])%y==0)ans++;
+        ll lagbe1=x-(a[i]%x);
+        if(a[i]%x==0)lagbe1=0;
+        ll lagbe2=a[i]%y;
+        if(mp.find({lagbe1,lagbe2})!=mp.end()){
+            ans+=mp[{lagbe1,lagbe2}];
         }
+        mp[{a[i]%x,a[i]%y}]++;
     }
     cout<<ans<<nl;
 }
