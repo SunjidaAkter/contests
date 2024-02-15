@@ -18,15 +18,12 @@ void solve(){
         ll cnt=0;
         while(x!=b[i]){
             x+=3;
-            // cout<<x<<" ";
             if(x>90){
                 x%=90;
                 x+=64;
             }
             cnt++;
         }
-        // C→F→I→L→O→R→U→X→A→D→G→J→M→P→S→V→Y 
-        // cout<<"uu"<<nl;
         k.push_back(cnt);
     }
     for(ll val:k)cout<<val<<" ";
