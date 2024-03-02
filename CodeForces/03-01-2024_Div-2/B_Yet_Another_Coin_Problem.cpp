@@ -14,9 +14,33 @@ void solve(){
     ll a[n]={1,3,6,10,15};
     ll x;cin>>x;
     ll s=x;
-    if(x>100)s=(x)%15;
-    // for(ll val:a)cout<<val<<" ";
-    // cout<<nl;
+    if(x<=100){
+        ll dp[n+1][s+1];
+        dp[0][0]=0;
+        for(ll i=1;i<=s;i++)dp[0][i]=LONG_MAX;
+        for(ll i=1;i<=n;i++){
+            for(ll j=0;j<=s;j++){
+                if(a[i-1]<=j){
+                    dp[i][j]=min(1+dp[i][j-a[i-1]],dp[i-1][j]);
+                }else{
+                    dp[i][j]=dp[i-1][j];
+                }
+            }
+        }
+        cout<<dp[n][s]<<nl;
+        return;
+        
+    }
+    
+    ll cnt=0;
+    for(ll i=100;i>=1;i--){
+        ll val=abs(s-i);
+        if(val%15==0){
+            cnt=val/15;
+            s-=val;
+            break;
+        }
+    }
     ll dp[n+1][s+1];
     dp[0][0]=0;
     for(ll i=1;i<=s;i++)dp[0][i]=LONG_MAX;
@@ -29,11 +53,7 @@ void solve(){
             }
         }
     }
-    if(x>100){
-        cout<<dp[n][s]+x/15<<nl;
-    }
-    else cout<<dp[n][s]<<nl;
-    
+    cout<<dp[n][s]+cnt<<nl;
 }
 int main(){
     FAST;
