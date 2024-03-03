@@ -10,7 +10,7 @@ using namespace std;
 #define FAST ios_base :: sync_with_stdio (false) ; cin.tie(0) ; cout.tie(0)
 typedef pair<int,int>pii;
 void solve(){
-    int n;cin>>n;
+    ll n;cin>>n;
     ll sum=0;
     sum+=(n*(n+1)/2);
     sum-=1;
