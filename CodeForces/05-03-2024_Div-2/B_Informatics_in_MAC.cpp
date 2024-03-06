@@ -18,9 +18,25 @@ void solve(){
     set<ll>sufm;
     ll x=0,y=0;
     for(ll i=0;i<n;i++){
-        prem.inesrt(a[i]);
-
+        prem.insert(a[i]);
+        while(prem.count(x))x++;
+        pre[i]=x;
     }
+    for(ll i=n-1;i>=0;i--){
+        sufm.insert(a[i]);
+        while(sufm.count(y))y++;
+        suf[i]=y;
+    }
+    vector<pii>ans;
+    for(ll i=0;i<n-1;i++){
+        if(pre[i]==suf[i+1]){
+            cout<<2<<nl;
+            cout<<1<<" "<<i+1<<nl;
+            cout<<i+2<<" "<<n<<nl;
+            return;
+        }
+    }
+    cout<<-1<<nl;
 }
 int main(){
     FAST;
