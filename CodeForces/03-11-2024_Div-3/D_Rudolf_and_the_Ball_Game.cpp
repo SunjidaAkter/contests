@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
-#define all(k) (X).begin(), (X).end()
+#define all(X) (X).begin(), (X).end()
 #define nl '\n'
 #define yes cout<<"YES"<<nl
 #define no cout<<"NO"<<nl
@@ -10,126 +10,32 @@ using namespace std;
 #define FAST ios_base :: sync_with_stdio (false) ; cin.tie(0) ; cout.tie(0)
 typedef pair<ll,ll>pii;
 void solve(){
-    // ll n,m,k;cin>>n>>m>>k;
-    // vector<ll>v;
-    // while(m--){
-    //     ll x;cin>>x;
-    //     char y;cin>>y;
-    //     if(y=='?'){
-    //         if(v.size()>0){
-    //             vector<ll>tmp;
-    //             for(ll val:v){
-    //                 ll z=val;
-    //                 z+=x;
-    //                 if(z>n)z%=n;
-    //                 tmp.push_back(z);
-    //                 z=val;
-    //                 z-=x;
-    //                 if(z<=0)z+=n;
-    //                 tmp.push_back(z);
-    //             }
-    //             v.clear();
-    //             v=tmp;
-    //         }else{
-    //             ll z=k;
-    //             z+=x;
-    //             if(z>n)z%=n;
-    //             v.push_back(z);
-    //             z=k;
-    //             z-=x;
-    //             if(z<=0)z+=n;
-    //             v.push_back(z);
-    //         }
-    //     }else if(y=='1'){
-    //         if(v.size()>0){
-    //             vector<ll>tmp;
-    //             for(ll val:v){
-    //                 ll z=val;
-    //                 z-=x;
-    //                 if(z<=0)z+=n;
-    //                 tmp.push_back(z);
-    //             }
-    //             v.clear();
-    //             v=tmp;
-    //         }else{
-    //             ll z=k;
-    //             z-=x;
-    //             if(z<=0)z+=n;
-    //             v.push_back(z);
-    //         }
-
-    //     }else{
-    //         if(v.size()>0){
-    //             vector<ll>tmp;
-    //             for(ll val:v){
-    //                 ll z=val;
-    //                 z+=x;
-    //                 if(z>n)z%=n;
-    //                 tmp.push_back(z);
-    //             }
-    //             v.clear();
-    //             v=tmp;
-    //         }else{
-    //             ll z=k;
-    //             z+=x;
-    //             if(z>n)z%=n;
-    //             v.push_back(z);
-    //         }
-
-    //     }
-
-    // }
-    // set<ll>st;
-    // for(ll val:v)st.insert(val);
-    // cout<<st.size()<<nl;
-    // while(!st.empty()){
-    //     cout<<*st.begin()<<" ";
-    //     st.erase(*st.begin());
-    // }
-    // cout<<nl;
-    ll n,m,k;
-    cin>>n>>m>>k;
-    vector<pair<ll,char>>v;
-    for(ll i=0;i<m;i++){
-        ll y;char c;
-        cin>>y>>c;
-        v.push_back({y,c});
-        
+    ll n,m,k;cin>>n>>m>>k;
+    vector<ll>a(n),b(n);
+    for(ll i=0;i<n;i++){
+        a[i]=0;
     }
-    set<ll>pl;
-    pl.insert(k);
-    for(ll i=0;i<m;i++){
-        ll y=v[i].first;
-        char c=v[i].second;
-
-        set<ll>s;
-        for(ll u:pl){
-    if(c=='0'){
-        ll j=(u+y-1)%n+1;
-        //cout<<v;
-        s.insert(j);
-    }
-    else if(c=='1'){
-         ll j=(u-y-1+n)%n+1;
-         //cout<<v;
-        s.insert(j);
-    }
-    else{
-     ll j=(u+y-1)%n+1;
-      ll v2=(u-y-1+n)%n+1;
-     // cout<<v<<' '<<v2<<'\n';
-     s.insert(j);
-     s.insert(v2);
-
-    }
+    a[k-1]=1;
+    while(m--){
+        ll x;cin>>x;
+        char c;cin>>c;
+        for(ll i=0;i<n;i++){
+            b[i]=0;
         }
-        pl=s;
+        for(ll i=0;i<n;i++){
+            if(a[i]==0)continue;
+            if(c=='?'||c=='0')b[(i+x)%n]=1;
+            if(c=='?'||c=='1')b[(n+(i-x))%n]=1;
+        }
+        a=b;
     }
-    cout<<pl.size()<<'\n';
-    for(ll p:pl){
-        cout<<p<<' ';
+    ll cnt=0;
+    for(ll val:a)if(val==1)cnt++;
+    cout<<cnt<<nl;
+    for(ll i=0;i<n;i++){
+        if(a[i])cout<<i+1<<" ";
     }
-    cout<<'\n';
+    cout<<nl;
 }
 int main(){
     FAST;
