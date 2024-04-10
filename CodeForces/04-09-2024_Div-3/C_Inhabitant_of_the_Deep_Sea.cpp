@@ -12,40 +12,28 @@ typedef pair<ll,ll>pii;
 void solve(){
     ll n,k;cin>>n>>k;
     vector<ll>a(n);
-    vector<ll>v;
+    ll sum=0;
     for(ll i=0;i<n;i++)cin>>a[i];
-    for(ll i=0;i<n/2+n%2;i++){
-        v.push_back(a[i]);
-        v.push_back(a.back());
-        a.pop_back();
+    for(ll i=0;i<n;i++)sum+=a[i];
+    if(k>=sum){
+        cout<<n<<nl;
+        return;
     }
-    ll cnt=0,x=n-1;
-    for(ll i=0;i<n;i++)cout<<v[i]<<" ";
-    cout<<nl;
-    for(ll i=0;i<n-1;i++){
-        if(v[i+1]==0)swap(v[i],v[i+1]);
-        if((v[i]!=0&&k>=2*(min(v[i],v[i+1])))||(k>=2*(min(v[i+1],v[i+2]))&&i!=n-2)){
-            if(v[i]==0&&i!=n-2){
-                i++;
-            }
-            if(v[i]==0&&i==n-2){
-                break;
-            }
-            ll xy=min(v[i],v[i+1]);
-            v[i]-=xy;
-            v[i+1]-=xy;
-            // cout<<max(v[i],v[i+1])<<nl;
-            if(max(v[i],v[i+1])==0){cnt++;}
+    ll kk=(k/2)+(k%2);
+    ll cnt=0;
+    for(ll i=0;i<n;i++){
+        if(kk>=a[i]){
             cnt++;
-            k-=2*xy;
-        }else if(v[i]<=v[i+1]&&k==2*(min(v[i],v[i+1]))-1){
-            v[i+1]-=(v[i]-1);
-            v[i]-=v[i];
-            cnt++;
-            k-=2*(min(v[i],v[i+1]))-1;
+            kk-=a[i];
         }else break;
     }
-    if(v.back()==0)cnt++;
+    kk=(k/2);
+    for(ll i=n-1;i>=0;i--){
+        if(kk>=a[i]){
+            cnt++;
+            kk-=a[i];
+        }else break;
+    }
     cout<<cnt<<nl;
 }
 int main(){
