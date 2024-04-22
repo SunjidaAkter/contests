@@ -11,40 +11,20 @@ using namespace std;
 typedef pair<ll,ll>pii;
 void solve(){
     ll n,k;cin>>n>>k;
-    ll y=k;
-    vector<ll>v;
-    ll x=1,i=0;
-    for(i=0;i<n;i++){
-        if(k>=x){
-            v.push_back(x);
-            k-=x;
-            x*=2;
-        }else break;
-    }
-    if(k>=0&&v.size()==n){
-        if(y%2==0){
-            cout<<1<<" "<<y-1<<" ";
-            for(i=0;i<n-2;i++){
-                cout<<0<<" ";
-            }
-            cout<<nl;
-            return;
-        }
-        cout<<y<<" ";
-        for(ll i=0;i<n-1;i++)cout<<0<<" ";
-        cout<<nl;
+    ll x=1,cnt=0;
+    if(n==1){
+        cout<<k<<nl;
         return;
     }
-    if(k>0&&v.size()<n){v.push_back(k);}
-    else if(k<=0&&v.size()<n){i--;}
-    // cout<<i<<"' i '";
-    if(v.size()<n){
-        // i=i-1;
-    // cout<<i<<" size ";
-        while(i<n-1){v.push_back(0);i++;}
-    // cout<<i<<" size ";
+    while(x<k){
+        x*=2;
+        cnt++;
     }
-    for(ll j=0;j<v.size();j++)cout<<v[j]<<" ";
+    if(x>k)x/=2;
+    cout<<x-1<<" "<<max(k-x+1,(ll)0)<<" ";
+    for(ll i=0;i<n-2;i++){
+        cout<<0<<" ";
+    }  
     cout<<nl;
 }
 int main(){
