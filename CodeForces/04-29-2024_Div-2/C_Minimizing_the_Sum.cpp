@@ -13,27 +13,24 @@ void solve(){
     ll n,k;cin>>n>>k;
     ll a[n];
     for(ll i=0;i<n;i++)cin>>a[i];
-    vector<ll>vc;
-    for(ll i=0;i<n;i++)vc.push_back(a[i]);
-    sort(vc.rbegin(),vc.rend());
-    map<ll,ll>mp;
-    for(ll i=0;i<n;i++){
-        if(!mp[vc[i]])mp[vc[i]]=i+1;
-    }
-    int ith=1;
-    while(k>0){
-        for(int i=0;i<n;i++){
-            if(mp[a[i]]==ith){
-                while(i+1<n && a[i]==a[i+1])i++;
-                a[i]=min(a[i-1>=0?i-1:i],a[i+1<n?i+1:i]);
+    vector<vector<ll>>dp(n+1,vector<ll>(k+1,LONG_MAX));
+    ll ans=LONG_MAX;
+    for(ll i=0;i<=k;i++)dp[0][i]=0;
+    for(ll pos=1;pos<=n;pos++){
+        for(ll j=0;j<=k;j++){
+            ll mn=LONG_MAX;
+            for(ll prev=pos;pos-prev<=j&&prev>0;prev--){
+                mn=min(mn,a[prev-1]);
+                ll x=(pos-prev+1)*mn;
+                x+=dp[prev-1][j-(pos-prev)];
+                dp[pos][j]=min(dp[pos][j],x);
             }
         }
-        ith++;
-        k--;
     }
-
-    ll sum=0;for(auto &c:a)sum+=c;
-    cout<<sum<<nl;
+    for(ll j=0;j<=k;j++){
+        ans=min(ans,dp[n][j]);
+    }
+    cout<<ans<<nl;
 }
 int main(){
     FAST;
